@@ -2,9 +2,17 @@ import random
 
 letters = "АБВГДЕЖИКЛМНОПРСТУФХЦЧШЭЮЯ"
 numbers = "123456789"
-
 cod_list = []
 count = 0
+cod_count = int(input("Enter cod count:"))
+
+
+def generate_number():
+    cod_number = []
+    for i in range(1, (cod_count + 1)):
+        i = str(i)
+        cod_number.append(i)
+    return cod_number
 
 
 def generate_cod():
@@ -22,8 +30,11 @@ def generate_cod():
     return letters_cod + " " + numbers_cod
 
 
-while count != 5:
+while count != cod_count:
     cod_list.append(generate_cod())
     count += 1
 
-print(cod_list)
+cod_table = dict(zip(generate_number(), cod_list))
+
+print(cod_table)
+
