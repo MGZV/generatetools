@@ -1,20 +1,14 @@
 import random
+import pandas as pd
 
+# Inputs
 letters = "АБВГДЕЖИКЛМНОПРСТУФХЦЧШЭЮЯ"
 numbers = "123456789"
 cod_list = []
 count = 0
 cod_count = int(input("Enter cod count:"))
 
-
-def generate_number():
-    cod_number = []
-    for i in range(1, (cod_count + 1)):
-        i = str(i)
-        cod_number.append(i)
-    return cod_number
-
-
+# Code work
 def generate_cod():
     letters_cod = ""
     numbers_cod = ""
@@ -34,7 +28,10 @@ while count != cod_count:
     cod_list.append(generate_cod())
     count += 1
 
-cod_table = dict(zip(generate_number(), cod_list))
+# Result
+cod_dict = {"Код": cod_list}
 
-print(cod_table)
+ordered_cod_dict = pd.DataFrame(cod_dict)
+ordered_cod_dict.index += 1
+ordered_cod_dict.to_excel("file_name.xlsx")
 
